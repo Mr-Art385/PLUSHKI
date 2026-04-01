@@ -1,0 +1,74 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f8f8f8;
+    background-color: #f1c697;
+}
+
+.hero {
+    min-height: 380px;
+    height: 750px;
+}
+
+.main-p{
+    width: 50%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    color: white
+}
+ /* ==== КАТАЛОГ ==== */
+.card-img-top {
+    object-fit: cover ;
+    height: 330px ;
+}
+
+.card-text {
+    color: #533617;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* ==== КАРТОЧКА ТОВАРА ==== */
+
+.price-block {
+    background-color: #f8f8f8;
+    color: black;
+    border-radius: 15px;
+    padding: 1em;
+    max-width: 400px;
+    margin-top: auto;
+}
+
+.card-img {
+    object-fit: cover;
+    height: 474px;
+}
+
+/* ==== КОНТАКТЫ ==== */
+
+.sviaz-img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.map {
+    min-height: 250px;
+    margin-bottom: 1em;
+}
+
+/* ==== ПОДВАЛ ==== */
+.footer {
+    border-top: 1px solid black;
+    background-color: #eaeaea;
+    padding: 10px 0;
+}
+
+.footer-p {
+    text-align: right;
+    margin: 0;
+    margin-right: 0.5em;
+}
