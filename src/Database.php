@@ -26,6 +26,10 @@ class Database {
         return self::$db;
     }
 
+    public function getPDO() {
+    return $this->pdo;
+    }
+
     // Вспомогательный метод – возвращает имя таблицы с префиксом
     private function getTableName(string $table_name): string {
         return '`' . DB_PREFIX . $table_name . '`';

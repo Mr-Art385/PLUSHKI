@@ -8,11 +8,13 @@
     define('DB_NAME', 'PLUSHKI');  
     define('DB_PREFIX', '');  
 
-    // НАСТРОЙКИ ДЛЯ ВЫВОДА
     define('DATE_FORM', 'd.m.Y H:i:s');
     define('PRODUCTS_PER_PAGE', 6);     // сколько товаров на странице
 
     // Путь для автоматической загрузки классов
     set_include_path(get_include_path() . PATH_SEPARATOR . 'src');
+    // get_include_path()	Получает текущий список папок, где PHP ищет файлы
+    // PATH_SEPARATOR	Разделитель путей (; на Windows, : на Linux/Mac)
+    // 'src'	Добавляем папку src в список поиска
     spl_autoload_register();            // автозагрузка классов
 ?>

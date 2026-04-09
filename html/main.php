@@ -2,8 +2,9 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/resets.css">
-    <link rel="stylesheet" href="css/style-adm.css">
+    <link rel="stylesheet" href="css/resets.css?v=<?= filemtime('css/resets.css') ?>">
+    <link rel="stylesheet" href="css/style-adm.css?v=<?= filemtime('css/style-adm.css') ?>">
+<!-- filemtime() возвращает время последнего изменения файла. Браузер увидит новый параметр ?v=... только когда файл реально меняется, и загрузит актуальную версию. -->
     <link rel="icon" type="image/x-icon" href="img/logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,16 @@
                             <li class="nav-item"><a href="index.php" class="nav-link">Главная</a></li>
                             <li class="nav-item"><a href="katalog.php" class="nav-link">Каталог</a></li>
                             <li class="nav-item"><a href="kontact.php" class="nav-link">Контакты</a></li>
+                            <li class="nav-item">
+                                <a href="cart.php" class="nav-link position-relative">
+                                    Корзина
+                                    <?php $cartCount = getCartTotalCount(); if ($cartCount > 0): ?>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            <?= $cartCount ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

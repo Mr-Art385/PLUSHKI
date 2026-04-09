@@ -21,7 +21,7 @@
                         <?php if ($product['old_price'] > 0): ?>
                             <s class="text-muted"><?= $product['old_price'] ?>₽</s>
                         <?php endif; ?>
-                        <a href="kontact.php" class="btn chocolate w-100 mt-2">Купить</a>
+                        <a href="product.php?id=<?= $product['id'] ?>" class="btn chocolate w-100 mt-2">Перейти к товару</a>
                     </div>
                 </div>
             <?php endforeach; ?>
