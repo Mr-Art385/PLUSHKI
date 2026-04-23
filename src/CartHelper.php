@@ -23,6 +23,9 @@ function addToCart($productId, $quantity = 1) {
 function removeFromCart($productId) {
     $productId = (int)$productId;
     unset($_SESSION['cart'][$productId]);
+    if (empty($_SESSION['cart'])) {
+        unset($_SESSION['cart']);
+    }
 }
 
 function updateCartQuantity($productId, $quantity) {
@@ -40,8 +43,8 @@ function getCartItems($db) {
 
     $ids = array_keys($_SESSION['cart']);
     $placeholders = implode(',', array_fill(0, count($ids), '?'));
-    $sql = "SELECT * FROM products WHERE id IN ($placeholders)";
-    $stmt = $db->getPDO()->prepare($sql);   
+    $pdo = $db->getPDO();
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE id IN ($placeholders)");
     $stmt->execute($ids);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -58,8 +61,7 @@ function getCartItems($db) {
 }
 
 function getCartTotalCount() {
-    if (empty($_SESSION['cart'])) return 0;
-    return array_sum($_SESSION['cart']);
+    return empty($_SESSION['cart']) ? 0 : array_sum($_SESSION['cart']);
 }
 
 function getCartTotalSum($db) {
@@ -72,5 +74,5 @@ function getCartTotalSum($db) {
 }
 
 function clearCart() {
-    $_SESSION['cart'] = [];
+    unset($_SESSION['cart']);
 }

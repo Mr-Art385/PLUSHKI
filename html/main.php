@@ -24,15 +24,40 @@
                             <li class="nav-item"><a href="index.php" class="nav-link">Главная</a></li>
                             <li class="nav-item"><a href="katalog.php" class="nav-link">Каталог</a></li>
                             <li class="nav-item"><a href="kontact.php" class="nav-link">Контакты</a></li>
+
+                            <!-- КОРЗИНА с проверкой авторизации -->
                             <li class="nav-item">
                                 <a href="cart.php" class="nav-link position-relative">
                                     Корзина
-                                    <?php $cartCount = getCartTotalCount(); if ($cartCount > 0): ?>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            <?= $cartCount ?>
-                                        </span>
+                                    <?php 
+                                        $cartCount = getCartTotalCount(); 
+                                        if ($cartCount > 0): ?>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                <?= $cartCount ?>
+                                            </span>
                                     <?php endif; ?>
                                 </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                    <?php if (isLoggedIn()): ?>
+                                         <?= htmlspecialchars($_SESSION['user_login']) ?>
+                                    <?php else: ?>
+                                        Войти
+                                    <?php endif; ?>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <?php if (isLoggedIn()): ?>
+                                        <li><a class="dropdown-item" href="profile.php">Мой профиль</a></li>
+                                        <li><a class="dropdown-item" href="cart.php">Корзина</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="logout.php">Выйти</a></li>
+                                    <?php else: ?>
+                                        <li><a class="dropdown-item" href="login.php">Войти</a></li>
+                                        <li><a class="dropdown-item" href="register.php">Зарегистрироваться</a></li>
+                                    <?php endif; ?>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -43,7 +68,6 @@
 
     <main class="milk">
         <div class="container pt-4">
-            <!-- СЮДА ПОДСТАВЛЯЕТСЯ СОДЕРЖИМОЕ КОНКРЕТНОЙ СТРАНИЦЫ -->
             <?php require_once $content . '.php'; ?>
         </div>
     </main>

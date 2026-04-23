@@ -2,6 +2,7 @@
 require_once __DIR__ . '/Config.php';
 require_once __DIR__ . '/Database.php';
 require_once __DIR__ . '/CartHelper.php';
+require_once __DIR__ . '/AuthHelper.php';
 
 // глобальный объект для работы с БД
 $db = Database::getDBO();
